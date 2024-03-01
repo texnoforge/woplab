@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "woplab"
+dynamic = ["version"]
+description = "Words of Power Laboratory"
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "texnoforge", email = "voice@texnoforge.dev" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "click",
+    "dynaconf",
+    "pandas",
+    "plotly",
+    "texnomagic >= 0.7.0",
+    "toml",
+]
+
+[project.scripts]
+woplab = "woplab.cli:main"
+
+[project.urls]
+"Bug Tracker" = "https://github.com/texnoforge/woplab/issues"
+Docs = "https://texnoforge.github.io/texnomagic"
+Homepage = "https://github.com/texnoforge/woplab/"
+
+[tool.hatch.version]
+path = "woplab/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/woplab",
+]
