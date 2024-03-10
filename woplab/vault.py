@@ -106,7 +106,7 @@ class VaultStats:
         df.index.name = 'symbol'
         return df
 
-    def get_times_plot_data(self):
+    def get_times_plot_data(self, time_floor='d'):
         dts = []
         data = {
             'good': [],
@@ -120,7 +120,7 @@ class VaultStats:
         df.index.name = 'time'
         df.columns.name = 'drawing'
         # aggregate by hour (for now)
-        df_sum = df.groupby(df.index.floor('h')).sum()
+        df_sum = df.groupby(df.index.floor(time_floor)).sum()
         return df_sum
 
 
