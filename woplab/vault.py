@@ -36,6 +36,29 @@ def tag_from_dir(drawings_dir):
     return tag or 'good'
 
 
+class VaultDrawings:
+    def __init__(self, path=None):
+        self.path = Path(path or config.cfg.vault_path)
+        self._tree = None
+
+    @property
+    def tree(self):
+        if self._tree is None:
+            self.load_drawings()
+        return self._tree
+
+    def load_drawings(self):
+        self._tree = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
+        for abc_path in self.path.glob('alphabets/*/'):
+            abc_name = abc_path.name
+            for symbol_path in abc_path.glob('symbols/*/'):
+                symbol_name = symbol_path.name
+                for drawings_path in symbol_path.glob('drawings*/'):
+                    tag = tag_from_dir(drawings_path.name)
+                    for drawing_path in drawings_path.glob('*.csv'):
+                        self._tree[abc_name][symbol_name][tag].append(drawing_path)
+
+
 class VaultStats:
     def __init__(self, path=None):
         self.path = Path(path or config.cfg.vault_path)
