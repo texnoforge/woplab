@@ -61,6 +61,7 @@ class VaultStats:
             self.times[dt] = tag
 
         self.n_drawings = len(self.times)
+        self.n_drawings_avg_per_symbol = round(self.n_drawings / float(len(self.n_symbols)))
         self.times = dict(sorted(self.times.items()))
 
     def get_symbols_badness(self, percent=False, sort=True, reverse=False):
@@ -157,6 +158,7 @@ def render_report(path):
                     symbols_tags_fig=symbols_tags_fig.to_html(**html_args),
                     symbols_badness_fig=symbols_badness_fig.to_html(**html_args),
                     times_fig=times_fig.to_html(**html_args),
+                    vs=vs,
                     )
     copy_static("css", path / "css")
 

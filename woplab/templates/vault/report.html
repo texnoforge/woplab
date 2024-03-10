@@ -1,21 +1,42 @@
 {% extends 'vault/base.html' %}
 
-{% block title %}Words of Power Vault Report{% endblock %}
+{% block title %}🧙‍♂️ Words of Power Vault Report 📈{% endblock %}
 {% block head %}	<script src="https://cdn.plot.ly/plotly-2.29.1.min.js" charset="utf-8"></script>{% endblock %}
 {% block header %}
-	<h1>Words of Power Vault Report</h1>
+<h1>🧙‍♂️ Words of Power Vault Report 📈</h1>
 {% endblock %}
 
 {% block content %}
+<p>
+<strong>{{ vs.n_drawings }}</strong> drawings collected for <strong>{{ vs.n_symbols | length }}</strong> symbols
+ - <strong>{{ vs.n_drawings_avg_per_symbol }}</strong> drawings per symbols on average
+</p>
 
+<p>
+<strong>{{ vs.n_tags['good'] }}</strong> good drawings, <strong>{{ vs.n_tags['bad'] }}</strong> bad drawings
+</p>
+
+<p>
+anyone can contribute at <a href="https://train.texnoforge.dev">train.texnoforge.dev</a>
+</p>
+
+<h2>drawing submission through time</h2>
+<div class="plot">
 {{ times_fig }}
-<br>
-
-<div class="container">
-
-{{ symbols_tags_fig }}
-<br>
-{{ symbols_badness_fig }}
 </div>
 
+<h2>amount of drawings per symbol</h2>
+<div class="plot">
+{{ symbols_tags_fig }}
+</div>
+
+<h2>drawing badness (bad / good ratio) per symbol
+<div class="plot">
+{{ symbols_badness_fig }}
+</div>
+{% endblock %}
+
+
+{% block footer %}<div>
+<a href="https://train.texnoforge.dev">contribute</a> 🖌, <a href="https://wop.texnoforge.dev/abc/texnolatin">view</a> the symbols 👀, check out <a href="https://github.com/texnoforge/texnolatin">TexnoLatin</a> sources 📜</div>
 {% endblock %}

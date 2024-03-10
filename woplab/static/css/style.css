@@ -16,9 +16,8 @@ footer {
 	line-height: 200%;
 }
 
-h1, h2, .breaker {
+.breaker {
 	clear: both;
-	margin: 0.7em 0 0.2em 0;
 }
 
 h1 {
@@ -26,8 +25,7 @@ h1 {
 }
 
 h2 {
-	font-size: 32px;
-	padding-top: 2em;
+	margin-top: 1.5em;
 }
 
 a {
@@ -62,4 +60,8 @@ a:hover {
 .big-size {
 	width: 960px;
 	height: 960px;
+}
+
+.plot {
+	margin: 1em 10% 1em 10%;
 }
