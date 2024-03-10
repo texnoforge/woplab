@@ -19,6 +19,7 @@ classifiers = [
 dependencies = [
     "click",
     "dynaconf",
+    "flask",
     "pandas",
     "plotly",
     "texnomagic >= 0.7.0",
